@@ -10,3 +10,4 @@ ___
 ## Полезные ссылки:
 - [Потом будут]
 
+![1](https://www.google.com/url?sa=i&url=https%3A%2F%2Fprogrammerhumour.tumblr.com%2Fpost%2F629237314412036096%2Funit-testing-vs-integration-testing&psig=AOvVaw1ecy4K5iL5YALBPuN-uHDl&ust=1645675244995000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDIrdn4lPYCFQAAAAAdAAAAABAR)
