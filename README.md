@@ -10,4 +10,3 @@ ___
 ## Полезные ссылки:
 - [Потом будут]
 
-![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
