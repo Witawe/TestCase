@@ -1,7 +1,3 @@
-# Обнаружение объектов с помощью RetinaNet
-## Группа:
-- Егоров Айтал as **[aitalyy](https://github.com/0dj3/ML-lab1/commits?author=aitalyy)**
-- Иннокентьев Владимир as **[0dj3](https://github.com/0dj3/ML-lab1/commits?author=0dj3)**
 - Луковцев Алексей as **[Witawe](https://github.com/0dj3/ML-lab1/commits?author=Witawe)**
 
 ![monkey](https://i.giphy.com/media/5Zesu5VPNGJlm/giphy.webp)
@@ -13,12 +9,11 @@ ___
 ___
 ## О программе:
 Данная программа является лабораторной работой по дисциплине "Машинное обучение"...
-- [Дизайн в Figma](https://www.figma.com/file/WsS4cGck8kmb84OwkmJIbN/%D0%9C%D0%9E-%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1?node-id=0%3A1)
-- [Ссылка на обученную модель](https://clck.ru/bEzow)
+- [Техническая документация](https://yagu.s-vfu.ru/mod/resource/view.php?id=750928)
+- [Положение о бально-рейтинговой системы СВФУ](https://www.s-vfu.ru/upload/iblock/964/96440a0a0b098fb986983806bb59a377.pdf)
+- [Шаблон ведомости](https://www.s-vfu.ru/upload/iblock/197/19784f052344d6f54bb49f5d871bdb33.pdf )
 ___
 ## Полезные ссылки:
-- [Документация PyQt](https://doc.qt.io/)
-- [Использованная база данных](https://cocodataset.org/)
-
+- [Потом будут]
 
 ![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
