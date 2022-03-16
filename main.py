@@ -51,10 +51,10 @@ class Exam:
     lecturer_fio: str
 
     def __init__(self, value_subject: Subject, value_examDate: date, value_year: str, value_lectFio: str):
-        self.code = value_subject
-        self.name = value_examDate
-        self.semestr = value_year
-        self.hours = value_lectFio
+        self.subject = value_subject
+        self.examDate = value_examDate
+        self.year = value_year
+        self.lecturer_fio = value_lectFio
 
 @dataclass
 class ExamPoints:
