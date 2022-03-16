@@ -32,6 +32,7 @@ class Subject:
         self.hours = value_hours
         self.specialization = value_specialization
 
+    #def GetSubject(self):
 
 
 @dataclass
