@@ -1,5 +1,3 @@
-- Луковцев Алексей as **[Witawe](https://github.com/0dj3/ML-lab1/commits?author=Witawe)**
-
 ![monkey](https://i.giphy.com/media/5Zesu5VPNGJlm/giphy.webp)
 ___
 ## Документация:
