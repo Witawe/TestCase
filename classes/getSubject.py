@@ -8,7 +8,7 @@ def getSubject(file, name_sub):
     #name_sub = "Иностранный язык в научной сфере"
     #subjects = list()
 
-    for row in range(1, sheet.max_row):
+    for row in range(1, sheet.max_row + 1):
         if sheet[row][1].value == name_sub:
             code = sheet[row][0].value
             name = sheet[row][1].value

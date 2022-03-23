@@ -45,12 +45,12 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(30, exampoints.examPoints)
 
     def test_class_getsubject(self):
-        subject = getSubject("./data/2семестр.xlsx", "Иностранный язык в научной сфере")
-        self.assertEqual("Б1.О.04", subject.code)
-        self.assertEqual("Иностранный язык в научной сфере", subject.name)
-        self.assertEqual(2, subject.semestr)
-        self.assertEqual(144, subject.hours)
-        self.assertEqual("ФИИТ", subject.specialization.name)
+        g_subject = getSubject("./data/2семестр.xlsx", "Межкультурная коммуникация в профессиональной деятельности")
+        self.assertEqual("Б1.О.02", g_subject.code)
+        self.assertEqual("Межкультурная коммуникация в профессиональной деятельности", g_subject.name)
+        self.assertEqual(2, g_subject.semestr)
+        self.assertEqual(72, g_subject.hours)
+        self.assertEqual("ФИИТ", g_subject.specialization.name)
 
 if __name__ == '__main__':
     unittest.main()
