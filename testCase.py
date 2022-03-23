@@ -1,4 +1,5 @@
 from main import Student, Specialization, Subject, Group, Exam, ExamPoints
+from classes.getSubject import getSubject
 from datetime import date
 import unittest
 
@@ -42,6 +43,14 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(Student, exampoints.student)
         self.assertEqual(59.9, exampoints.inPoints)
         self.assertEqual(30, exampoints.examPoints)
+
+    def test_class_getsubject(self):
+        subject = getSubject("./data/2семестр.xlsx", "Иностранный язык в научной сфере")
+        self.assertEqual("Б1.О.04", subject.code)
+        self.assertEqual("Иностранный язык в научной сфере", subject.name)
+        self.assertEqual(2, subject.semestr)
+        self.assertEqual(144, subject.hours)
+        self.assertEqual("ФИИТ", subject.specialization.name)
 
 if __name__ == '__main__':
     unittest.main()
