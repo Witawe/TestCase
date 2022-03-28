@@ -32,7 +32,6 @@ class Subject:
         self.hours = value_hours
         self.specialization = value_specialization
 
-
 @dataclass
 class Group:
     name: str

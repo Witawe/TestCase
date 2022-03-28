@@ -45,7 +45,7 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(30, exampoints.examPoints)
 
     def test_class_getsubject(self):
-        g_subject = getSubject("./data/2семестр.xlsx", "Межкультурная коммуникация в профессиональной деятельности")
+        g_subject = getSubject("../data/2семестр.xlsx", "Межкультурная коммуникация в профессиональной деятельности")
         self.assertEqual("Б1.О.02", g_subject.code)
         self.assertEqual("Межкультурная коммуникация в профессиональной деятельности", g_subject.name)
         self.assertEqual(2, g_subject.semestr)
