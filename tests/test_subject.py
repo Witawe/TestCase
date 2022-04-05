@@ -35,14 +35,14 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_five(self):
         sub = Subject('Б1.О.07', 'Машинное обучение', 2, 288, 12)
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_six(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -50,7 +50,7 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_seven(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -58,7 +58,7 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_eight(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -68,7 +68,7 @@ class TestAddSubject(unittest.TestCase):
         with self.assertRaises(Exception):
             inst.add_subject(sub)
             inst.add_subject(sub1)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_nine(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -76,7 +76,7 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_nine(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -84,13 +84,13 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(sub)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 
     def test_ten(self):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(123)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 0)
 '''
 
 if __name__ == "__main__":

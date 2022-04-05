@@ -26,7 +26,7 @@ class Institute:
         self.students.append(stud)
 
     def add_group(self, group: Group):
-        if type(group) != Student:
+        if type(group) != Group:
             raise Exception('Type error')
         for i in self.groups:
             if i == group:
@@ -34,7 +34,7 @@ class Institute:
         self.groups.append(group)
 
     def add_subject(self, subject: Subject):
-        if type(subject) != Student:
+        if type(subject) != Subject:
             raise Exception('Type error')
         for i in self.subjects:
             if i == subject:
@@ -42,7 +42,7 @@ class Institute:
         self.subjects.append(subject)
 
     def add_exam(self, exam: Exam):
-        if type(exam) != Student:
+        if type(exam) != Exam:
             raise Exception('Type error')
         for i in self.exams:
             if i == exam:
@@ -50,7 +50,7 @@ class Institute:
         self.exams.append(exam)
 
     def add_exam_marks(self, exam_result: ExamPoints):
-        if type(exam_result) != Student:
+        if type(exam_result) != ExamPoints:
             raise Exception('Type error')
         for i in self.exam_results:
             if i == exam_result:
