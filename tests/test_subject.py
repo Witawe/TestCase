@@ -1,5 +1,6 @@
 from main import Subject, Specialization
 from classes.institute import Institute
+from classes.getSubject import getSubject
 import unittest
 
 class TestAddSubject(unittest.TestCase):
@@ -17,7 +18,7 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         inst.add_subject(sub)
         inst.add_subject(sub1)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 2)
 
     def test_three(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -27,7 +28,7 @@ class TestAddSubject(unittest.TestCase):
         inst = Institute()
         inst.add_subject(sub)
         inst.add_subject(sub1)
-        self.assertEqual(len(inst.subjects), 1)
+        self.assertEqual(len(inst.subjects), 2)
 '''
     def test_four(self):
         spec = Specialization('')
@@ -92,6 +93,30 @@ class TestAddSubject(unittest.TestCase):
             inst.add_subject(123)
         self.assertEqual(len(inst.subjects), 0)
 '''
+
+class TestGetSubject(unittest.TestCase):
+    def test_1(self): #correct
+        g_subject = getSubject("../data/2семестр.xlsx", "Межкультурная коммуникация в профессиональной деятельности")
+        self.assertEqual("Б1.О.02", g_subject.code)
+        self.assertEqual("Межкультурная коммуникация в профессиональной деятельности", g_subject.name)
+        self.assertEqual(2, g_subject.semestr)
+        self.assertEqual(72, g_subject.hours)
+        self.assertEqual("ФИИТ", g_subject.specialization.name)
+
+    def test_2(self):
+        g_subject = getSubject("../data/2семестр.xlsx", None)
+        with self.assertRaises(Exception):
+            getSubject(g_subject)
+
+    def test_3(self):
+        g_subject = getSubject("../data/2семестр.xlsx", "")
+        with self.assertRaises(Exception):
+            getSubject(g_subject)
+
+    def test_4(self):
+        g_subject = getSubject("../data/2семестр.xlsx", 123123)
+        with self.assertRaises(Exception):
+            getSubject(g_subject)
 
 if __name__ == "__main__":
     unittest.main()
