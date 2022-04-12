@@ -49,10 +49,53 @@ class Institute:
                 raise Exception('error')
         self.exams.append(exam)
 
-    def add_exam_marks(self, exam_result: ExamPoints):
-        if type(exam_result) != ExamPoints:
-            raise Exception('Type error')
-        for i in self.exam_results:
-            if i == exam_result:
-                raise Exception('error')
-        self.exam_results.append(exam_result)
+    def add_exam_result(self, exam_results):
+        t = (exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)
+        if t in self.exam_results.keys():
+            self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)].append(
+                exam_results)
+        else:
+            self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)] = [
+                exam_results]
+
+    def get_student(self, studCode: int):
+        if studCode < 0:
+            raise Exception('Номер зачетки отрицательным быть не может')
+        if len(str(studCode)) != 6:
+            raise Exception('Номер зачетки должен быть шестизначным')
+        if type(studCode) != int:
+            raise Exception('Номер зачетки должен числовым')
+        if studCode == None:
+            raise Exception('Введите номер зачетки')
+        for student in self.students:
+            if student.code == studCode:
+                return student
+            else:
+                raise Exception('Студент не найден')
+
+    def get_subject(self, sub_name: str):
+        for subject in self.subjects:
+            if subject.name == sub_name:
+                return subject
+            else:
+                raise Exception('Предмет не найден')
+
+    def get_spec(self, name: str):
+        for spec in self.specs:
+            if spec.name == name:
+                return spec
+            else:
+                raise Exception('Специализация не найдена')
+
+    def get_group(self, name: str):
+        for group in self.groups:
+            if group.name == name:
+                return group
+            else:
+                raise Exception('Группа не найдена')
+
+    def get_exam(self, gr_name, subj_name, exam_date):
+        pass
+
+    def get_exam_result(self, group_name, subject_name, date):
+        return self.exam_points[(group_name, subject_name, date)]

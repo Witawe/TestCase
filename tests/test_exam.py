@@ -184,49 +184,51 @@ class TestAddExam(unittest.TestCase):
 '''
 
 class TestGetExam(unittest.TestCase):
-    def test_1(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-18", "Основы программирования", date(2018, 1, 10))
-        #self.assertEqual()
+    def __init__(self, *args, **kwargs):
+        self.institute = Institute()
 
+        spec1 = Specialization('Информатика и вычислительная техника')
+        sub1 = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, spec1)
+        data1 = date(2021, 1, 3)
+
+        spec = Specialization('Фундаментальная информатика и информационные технологии')
+        sub = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, spec)
+        data = date(2021, 1, 1)
+
+        self.institute.exams = [
+            Exam(sub, data, 2021, 'Эверстов Владимир Васильевич'),
+            Exam(sub1, data1, 2021,'Григорьев Александр Виссарионович')
+        ]
+        super(TestGetExam, self).__init__(*args, **kwargs)
+
+    def test_1(self):
+        g_exam = self.institute.get_exam("М-ФИИТ-21", "Методы тестирования и верификации программных продуктов", date(2021, 1, 1))
+        #self.assertEqual()
+'''
     def test_2(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "", "Основы программирования", date(2018, 1, 10))
         with self.assertRaises(Exception):
-            getExam(g_exam)
+            self.institute.get_exam("", "Методы тестирования и верификации программных продуктов", date(2021, 1, 1))
 
     def test_3(self):
-        g_exam = getExam("../data/Экзамены.xlsx", None, "Основы программирования", date(2018, 1, 10))
+        g_exam = getExam("../data/Экзамены.xlsx", None, None, None)
         with self.assertRaises(Exception):
             getExam(g_exam)
 
     def test_4(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-18", "", date(2018, 1, 10))
         with self.assertRaises(Exception):
-            getExam(g_exam)
+            self.institute.get_exam("Б-ФИИТ-18", "", date(2021, 1, 1))
 
     def test_5(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-18", None, date(2018, 1, 10))
         with self.assertRaises(Exception):
-            getExam(g_exam)
+            self.institute.get_exam("Б-ФИИТ-18", "Основы программирования", "")
 
     def test_6(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-18", "Основы программирования", "")
         with self.assertRaises(Exception):
-            getExam(g_exam)
+            self.institute.get_exam("Б-ФИИТ-18", "Основы программирования", 12312)
 
     def test_7(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-18", "Основы программирования", None)
         with self.assertRaises(Exception):
-            getExam(g_exam)
-
-    def test_8(self):
-        g_exam = getExam("../data/Экзамены.xlsx", "Б-ФИИТ-82", 12312, None)
-        with self.assertRaises(Exception):
-            getExam(g_exam)
-
-    def test_8(self):
-        g_exam = getExam("../data/Экзамены.xlsx", 123123, "Основы программирования", date(2018, 1, 10))
-        with self.assertRaises(Exception):
-            getExam(g_exam)
-
+            self.institute.get_exam(123123, "Основы программирования", 12312)
+'''
 if __name__ == "__main__":
     unittest.main()

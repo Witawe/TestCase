@@ -18,8 +18,8 @@ class TestAddExamResult(unittest.TestCase):
         inst = Institute()
         inst.add_exam_marks(result)
         inst.add_exam_marks(result1)
-        self.assertEqual(len(inst.exam_results), 1)
-'''
+        self.assertEqual(len(inst.exam_results), 2)
+
     def test_three(self):
         stud = Student('Луковцев Алексей Владимирович', 185775)
         result = ExamPoints(stud, 80.0, 10)
@@ -80,7 +80,7 @@ class TestAddExamResult(unittest.TestCase):
         with self.assertRaises(Exception):
             inst.add_exam_marks(result)
         self.assertEqual(len(inst.exam_results), 0)
-'''
+
 
 class TestGetExamResult(unittest.TestCase):
     def test_2(self):

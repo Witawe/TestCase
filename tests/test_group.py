@@ -120,51 +120,51 @@ class TestAddGroup(unittest.TestCase):
 '''
 
 class TestGetGroup(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        self.institute = Institute()
+        self.institute.groups = [
+            Group("М-ДУ-20", 2020, "Математика (Дифференциальные уравнения,оптимальное управление и аналитика)"),
+            Group("М-ФИИТ-21", 2021, "Фундамельная информатика и информационные технологии")
+        ]
+        super(TestGetGroup, self).__init__(*args, **kwargs)
+
     def test_1(self): #correct
-        g_group = getGroup("../data/Группы.xlsx", "М-ФИИТ-21")
-        self.assertEqual('М-ФИИТ-21', g_group.name)
-        self.assertEqual(2021, g_group.year)
-        self.assertEqual('ФИИТ', g_group.specialization)
+        g_group = self.institute.get_group('М-ДУ-20')
+        self.assertEqual("М-ДУ-20", g_group.name)
+        self.assertEqual(2020, g_group.year)
+        self.assertEqual("Математика (Дифференциальные уравнения,оптимальное управление и аналитика)", g_group.specialization)
 
     def test_2(self):
-        g_group = getGroup("../data/Группы.xlsx", "М-ФИИТ-17")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("М-ФИИТ-17")
 
     def test_3(self):
-        g_group = getGroup("../data/Группы.xlsx", "Б-ФИИТ-17")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("Б-ФИИТ-17")
 
     def test_4(self):
-        g_group = getGroup("../data/Группы.xlsx", "ФИИТ-17")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("ФИИТ-21")
 
     def test_5(self):
-        g_group = getGroup("../data/Группы.xlsx", "М-ФИИТ-99")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("М-ФИИТ-99")
 
     def test_6(self):
-        g_group = getGroup("../data/Группы.xlsx", None)
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group(None)
 
     def test_7(self):
-        g_group = getGroup("../data/Группы.xlsx", "123123")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("123123")
 
     def test_8(self):
-        g_group = getGroup("../data/Группы.xlsx", "М-фывфывдл-21")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("М-фывфывдл-21")
 
     def test_9(self):
-        g_group = getGroup("../data/Группы.xlsx", "")
         with self.assertRaises(Exception):
-            getGroup(g_group)
+            self.institute.get_group("")
 
 if __name__ == "__main__":
     unittest.main()

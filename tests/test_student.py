@@ -1,6 +1,5 @@
 from main import Student
 from classes.institute import Institute
-from classes.getStudent import getStudent
 import unittest
 
 class TestAddStudent(unittest.TestCase):
@@ -87,41 +86,43 @@ class TestAddStudent(unittest.TestCase):
 '''
 
 class TestGetStudent(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        self.institute = Institute()
+        self.institute.students = [
+            Student("Алексей Владимирович Луковцев", 185775),
+            Student("Иван Иванович Иванов", 548724)
+        ]
+        super(TestGetStudent, self).__init__(*args, **kwargs)
+
     def test_1(self): #correct
-        g_student = getStudent("../data/Студенты.xlsx", 123458)
-        self.assertEqual("Сидоров Сидор Сидорович", g_student.fio)
-        self.assertEqual(123458, g_student.code)
-'''
+        g_student = self.institute.get_student(185775)
+        self.assertEqual("Алексей Владимирович Луковцев", g_student.fio)
+        self.assertEqual(185775, g_student.code)
+
     def test_2(self):
-        g_student = getStudent("../data/Студенты.xlsx", -154512)
         with self.assertRaises(Exception):
-            getStudent(g_student)
+            self.institute.get_student(-154512)
 
     def test_3(self):
-        g_student = getStudent("../data/Студенты.xlsx", 99999)
         with self.assertRaises(Exception):
-            getStudent(g_student)
+            self.institute.get_student(99999)
 
     def test_4(self):
-        g_student = getStudent("../data/Студенты.xlsx", 1000000)
         with self.assertRaises(Exception):
-            getStudent(g_student)
+            self.institute.get_student(1000000)
 
     def test_5(self):
-        g_student = getStudent("../data/Студенты.xlsx", 152.451)
         with self.assertRaises(Exception):
-            getStudent(g_student)
+            self.institute.get_student(152.451)
 
     def test_6(self):
-        g_student = getStudent("../data/Студенты.xlsx", "lol")
         with self.assertRaises(Exception):
-            getStudent(g_student)
+            self.institute.get_student("lol")
 
     def test_7(self):
-        g_student = getStudent("../data/Студенты.xlsx", None)
         with self.assertRaises(Exception):
-            getStudent(g_student)
-'''
+            self.institute.get_student(None)
+
 
 if __name__ == "__main__":
     unittest.main()

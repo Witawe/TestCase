@@ -79,7 +79,7 @@ class TestAddSubject(unittest.TestCase):
             inst.add_subject(sub)
         self.assertEqual(len(inst.subjects), 0)
 
-    def test_nine(self):
+    def test_ten(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
         sub = Subject(123, 1123, '2', '288', spec)
         inst = Institute()
@@ -87,7 +87,7 @@ class TestAddSubject(unittest.TestCase):
             inst.add_subject(sub)
         self.assertEqual(len(inst.subjects), 0)
 
-    def test_ten(self):
+    def test_eleven(self):
         inst = Institute()
         with self.assertRaises(Exception):
             inst.add_subject(123)
@@ -95,28 +95,33 @@ class TestAddSubject(unittest.TestCase):
 '''
 
 class TestGetSubject(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        self.institute = Institute()
+        sp = Specialization("Фундаментальная информатика и информационные технологии")
+        self.institute.subjects = [
+            Subject("Б1.О.02", "Межкультурная коммуникация в профессиональной деятельности", 2,  72, sp),
+            Subject("Б1.О.07", "Машинное обучение", 2,  288, sp)]
+        super(TestGetSubject, self).__init__(*args, **kwargs)
+
     def test_1(self): #correct
-        g_subject = getSubject("../data/2семестр.xlsx", "Межкультурная коммуникация в профессиональной деятельности")
+        g_subject = self.institute.get_subject("Межкультурная коммуникация в профессиональной деятельности")
         self.assertEqual("Б1.О.02", g_subject.code)
         self.assertEqual("Межкультурная коммуникация в профессиональной деятельности", g_subject.name)
         self.assertEqual(2, g_subject.semestr)
         self.assertEqual(72, g_subject.hours)
-        self.assertEqual("ФИИТ", g_subject.specialization.name)
+        self.assertEqual("Фундаментальная информатика и информационные технологии", g_subject.specialization.name)
 
     def test_2(self):
-        g_subject = getSubject("../data/2семестр.xlsx", None)
         with self.assertRaises(Exception):
-            getSubject(g_subject)
+            self.institute.get_subject(None)
 
     def test_3(self):
-        g_subject = getSubject("../data/2семестр.xlsx", "")
         with self.assertRaises(Exception):
-            getSubject(g_subject)
+            self.institute.get_subject("")
 
     def test_4(self):
-        g_subject = getSubject("../data/2семестр.xlsx", 123123)
         with self.assertRaises(Exception):
-            getSubject(g_subject)
+            self.institute.get_subject(123123)
 
 if __name__ == "__main__":
     unittest.main()
