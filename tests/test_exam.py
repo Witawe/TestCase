@@ -12,7 +12,7 @@ class TestAddExam(unittest.TestCase):
         exam = Exam(sub, data, '2021-2022', 'Эверстов Владимир Васильевич')
         inst = Institute()
         inst.add_exam(exam)
-        #self.assertEqual(len(inst.exams), 1)
+        self.assertEqual(len(inst.exams), 1)
 
     def test_two(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -30,7 +30,7 @@ class TestAddExam(unittest.TestCase):
         inst = Institute()
         inst.add_exam(exam)
         inst.add_exam(exam1)
-        #self.assertEqual(len(inst.exams), 1)
+        self.assertEqual(len(inst.exams), 2)
 
     def test_three(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -48,7 +48,7 @@ class TestAddExam(unittest.TestCase):
         inst = Institute()
         inst.add_exam(exam)
         inst.add_exam(exam1)
-        #self.assertEqual(len(inst.exams), 1)
+        self.assertEqual(len(inst.exams), 2)
 
     def test_four(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
@@ -65,17 +65,17 @@ class TestAddExam(unittest.TestCase):
         inst = Institute()
         inst.add_exam(exam)
         inst.add_exam(exam1)
-        #self.assertEqual(len(inst.exams), 1)
-'''
-    def test_five(self):
-        spec = Specialization('')
-        sub = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, spec)
-        data = date(2021, 1, 1)
-        exam = Exam(sub, data, '2021-2022', 'Эверстов Владимир Васильевич')
-        inst = Institute()
-        with self.assertRaises(Exception):
-            inst.add_exam(exam)
-        self.assertEqual(len(inst.exams), 0)
+        self.assertEqual(len(inst.exams), 2)
+
+    # def test_five(self):
+    #     spec = Specialization('')
+    #     sub = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, spec)
+    #     data = date(2021, 1, 1)
+    #     exam = Exam(sub, data, '2021-2022', 'Эверстов Владимир Васильевич')
+    #     inst = Institute()
+    #     with self.assertRaises(Exception):
+    #         inst.add_exam(exam)
+    #     self.assertEqual(len(inst.exams), 0)
 
     def test_six(self):
         sub = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, 12)
@@ -126,7 +126,7 @@ class TestAddExam(unittest.TestCase):
             inst.add_exam(exam)
         self.assertEqual(len(inst.exams), 0)
 
-    def test_eleven(self):
+    def test_eleven_1(self):
         spec = Specialization('Фундаментальная информатика и информационные технологии')
         sub = Subject('Б1.В.02', 'Методы тестирования и верификации программных продуктов', 2, 108, spec)
         data = date(2021, 1, 1)
@@ -156,7 +156,7 @@ class TestAddExam(unittest.TestCase):
         with self.assertRaises(Exception):
             inst.add_exam(exam)
             inst.add_exam(exam1)
-        self.assertEqual(len(inst.exams), 0)
+        self.assertEqual(len(inst.exams), 1)
 
     def test_thirteen(self):
         inst = Institute()
@@ -181,7 +181,7 @@ class TestAddExam(unittest.TestCase):
         with self.assertRaises(Exception):
             inst.add_exam(exam)
         self.assertEqual(len(inst.exams), 0)
-'''
+
 
 class TestGetExam(unittest.TestCase):
     def __init__(self, *args, **kwargs):

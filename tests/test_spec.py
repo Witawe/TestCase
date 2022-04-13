@@ -4,49 +4,40 @@ from classes.getSpec import getSpecialization
 import unittest
 
 class TestAddSpec(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        self.institute = Institute()
+        self.institute.specs = []
+        super(TestAddSpec, self).__init__(*args, **kwargs)
+
     def test_one(self): #correct
         sp = Specialization('Фундаментальная информатика и информационные технологии')
-        inst = Institute()
-        inst.add_spec(sp)
-        self.assertEqual(len(inst.specs), 1)
+        self.institute.add_spec(sp)
+        self.assertEqual(len(self.institute.specs), 1)
 
     def test_two(self): #correct
         sp = Specialization('Фундаментальная информатика и информационные технологии')
         sp1 = Specialization('Информатика и вычислительная техника')
-        inst = Institute()
-        inst.add_spec(sp)
-        inst.add_spec(sp1)
-        self.assertEqual(len(inst.specs), 2)
-'''
+        self.institute.add_spec(sp)
+        self.institute.add_spec(sp1)
+        self.assertEqual(len(self.institute.specs), 2)
+
     def test_three(self):
-        sp = Specialization('')
-        inst = Institute()
         with self.assertRaises(Exception):
-            inst.add_spec(sp)
-        self.assertEqual(len(inst.specs), 0)
+            self.institute.add_spec('')
+        self.assertEqual(len(self.institute.specs), 0)
 
     def test_four(self):
-        sp = Specialization('')
-        inst = Institute('')
-        with self.assertRaises(Exception):
-            inst.add_spec(sp)
-        self.assertEqual(len(inst.specs), 0)
-
-    def test_five(self):
         sp = Specialization('Фундаментальная информатика и информационные технологии')
         sp1 = Specialization('Фундаментальная информатика и информационные технологии')
-        inst = Institute()
         with self.assertRaises(Exception):
-            inst.add_spec(sp)
-            inst.add_spec(sp1)
-        self.assertEqual(len(inst.specs), 0)
+            self.institute.add_spec(sp)
+            self.institute.add_spec(sp1)
+        self.assertEqual(len(self.institute.specs), 1)
 
-    def test_six(self):
-        inst = Institute()
+    def test_five(self):
         with self.assertRaises(Exception):
-            inst.add_spec('')
-        self.assertEqual(len(inst.specs), 0)
-'''
+            self.institute.add_spec('')
+        self.assertEqual(len(self.institute.specs), 0)
 
 class TestGetSpec(unittest.TestCase):
     def __init__(self, *args, **kwargs):

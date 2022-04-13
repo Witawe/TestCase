@@ -1,4 +1,5 @@
 from main import *
+import datetime
 
 class Institute:
     def __init__(self):
@@ -11,42 +12,105 @@ class Institute:
 
     def add_spec(self, spec: Specialization):
         if type(spec) != Specialization:
-            raise Exception('Type error')
+            raise Exception('Ошибка типа')
+        if len(str(spec)) <= 1:
+            raise Exception("Введите название корректно")
         for i in self.specs:
             if i == spec:
-                raise Exception('error')
+                raise Exception('Эта специализация уже существует')
         self.specs.append(spec)
 
     def add_stud(self, stud: Student):
         if type(stud) != Student:
-            raise Exception('Type error')
+            raise Exception('Ошибка типа')
+        if type(stud.fio) != str or type(stud.code) != int:
+            raise Exception('Ошибка типа данных')
+        if len(str(stud.fio)) <= 1:
+            raise Exception('Введите ФИО корректно')
+        if stud.code < 0:
+            raise Exception('Номер зачетки отрицательным быть не может')
+        if len(str(stud.code)) != 6:
+            raise Exception('Номер зачетки должен быть шестизначным')
+        if stud.code == None or stud.fio == None:
+            raise Exception('Введите номер зачетки')
         for i in self.students:
-            if i == stud:
-                raise Exception('error')
+            if i == stud.fio:
+                raise Exception('Такой студент уже существует')
+            if i == stud.code:
+                raise Exception('Такой студент уже существует')
         self.students.append(stud)
 
     def add_group(self, group: Group):
+        now = datetime.datetime.now()
+        stroka = group.name.split()
+        if stroka[0][0] != 'Б' and stroka[0][0] != 'М':
+            if stroka[0][0] != 'Б' and (now.year - group.year) >= 4:
+                raise Exception('Бакалавры учатся 4 года')
+            if stroka[0][0] != 'М' and (now.year - group.year) >= 2:
+                raise Exception('Бакалавры учатся 2 года')
+            raise Exception('Бакалавры или Магистранты?')
+        if type(group.name) != str or type(group.year) != int or type(group.specialization) != Specialization:
+            raise Exception('Ошибка типа данных')
+        if group.specialization == '':
+            raise Exception('Введите специализацию')
         if type(group) != Group:
-            raise Exception('Type error')
+            raise Exception('Ошибка типа')
         for i in self.groups:
             if i == group:
-                raise Exception('error')
+                raise Exception('Такая группа уже существует')
         self.groups.append(group)
 
     def add_subject(self, subject: Subject):
         if type(subject) != Subject:
-            raise Exception('Type error')
+            raise Exception('Ошибка типа')
+        if type(subject.name) != str or \
+                type(subject.code) != str or \
+                type(subject.specialization) != Specialization or \
+                type(subject.hours) != int or \
+                type(subject.semestr) != int:
+            raise Exception('Ошибка типа данных')
+        if len(str(subject.specialization)) == 0:
+            raise Exception('Введите специализацию')
+        if subject.semestr == 0 or subject.hours == 0:
+            raise Exception('Введите часы или семестр')
+        if subject == None:
+            raise Exception('Ошибка')
         for i in self.subjects:
             if i == subject:
-                raise Exception('error')
+                raise Exception('Такой предмет уже существует')
         self.subjects.append(subject)
 
     def add_exam(self, exam: Exam):
+        now = datetime.datetime.now()
         if type(exam) != Exam:
-            raise Exception('Type error')
+            raise Exception('Ошибка типа')
+        if type(exam.subject.name) != str or \
+                type(exam.subject.code) != str or \
+                type(exam.subject.specialization) != Specialization or \
+                type(exam.subject.hours) != int or \
+                type(exam.subject.semestr) != int:
+            raise Exception('Ошибка типа данных')
+        if str(exam.subject.name) == "" or \
+                str(exam.subject.code) == "" or \
+                str(exam.subject.specialization) == "" or \
+                str(exam.subject.hours) == "" or \
+                str(exam.subject.semestr) == "":
+            raise Exception('Ошибка типа данных')
+        if exam.examDate.year > now.year:
+            raise Exception('Год не может быть больше текущего года')
+        if str(exam.subject.specialization) == '':
+            raise Exception('Введите специализацию')
+        if exam.subject.semestr == 0 or exam.subject.hours == 0:
+            raise Exception('Введите часы или семестр')
+        if exam.lecturer_fio == "":
+            raise Exception('Введите ФИО преподователя')
+        if exam.year == "":
+            raise Exception('Введите год сдачи экзамена')
+        if exam.subject == None:
+            raise Exception('Ошибка')
         for i in self.exams:
             if i == exam:
-                raise Exception('error')
+                raise Exception('Такой экзамен уже существует')
         self.exams.append(exam)
 
     def add_exam_result(self, exam_results):

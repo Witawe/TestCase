@@ -6,21 +6,21 @@ import unittest
 class TestAddGroup(unittest.TestCase):
     def test_one(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
-        group = Group('М-ФИИТ-21', '2021', spec)
+        group = Group('М-ФИИТ-21', 2021, spec)
         inst = Institute()
         inst.add_group(group)
         self.assertEqual(len(inst.groups), 1)
 
     def test_two(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
-        group = Group('М-ФИИТ-21', '2021', spec)
+        group = Group('М-ФИИТ-21', 2021, spec)
         spec1 = Specialization('Информатика и вычислительная техника')
-        group1 = Group('М-ИВТ-21', '2021', spec1)
+        group1 = Group('М-ИВТ-21', 2021, spec1)
         inst = Institute()
         inst.add_group(group)
         inst.add_group(group1)
         self.assertEqual(len(inst.groups), 2)
-'''
+
     def test_three(self):
         spec = Specialization('')
         group = Group('М-ФИИТ-21', '2021', spec)
@@ -111,13 +111,13 @@ class TestAddGroup(unittest.TestCase):
 
     def test_fourteen(self): #correct
         spec = Specialization('Фундаментальная информатика и информационные технологии')
-        group = Group('М-ФИИТ-21', '2021', spec)
-        group1 = Group('Б-ФИИТ-17', '2017', spec)
+        group = Group('М-ФИИТ-21', 2021, spec)
+        group1 = Group('Б-ФИИТ-17', 2017, spec)
         inst = Institute()
         inst.add_group(group)
         inst.add_group(group1)
         self.assertEqual(len(inst.groups), 2)
-'''
+
 
 class TestGetGroup(unittest.TestCase):
     def __init__(self, *args, **kwargs):
