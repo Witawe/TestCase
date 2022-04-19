@@ -144,6 +144,8 @@ class Institute:
             raise Exception('Заполните поле')
         if str(sub_name) == None:
             raise Exception('Заполните поле')
+        if str(sub_name) == None:
+            raise Exception('Заполните поле')
         for subject in self.subjects:
             if subject.name == sub_name:
                 return subject
@@ -183,5 +185,9 @@ class Institute:
             raise Exception("Экзамен не найден")
         return listExam
 
-    def get_exam_result(self, group_name, subject_name, date):
+    def get_exam_result(self, group_name, subject_name, data):
+        if type(group_name) != str or type(subject_name) != str or type(data) != datetime:
+            raise Exception("Ошибка типа данных")
+        if group_name == None or subject_name == None or data == None:
+            raise Exception("Заполните строки")
         return self.exam_points[(group_name, subject_name, date)]

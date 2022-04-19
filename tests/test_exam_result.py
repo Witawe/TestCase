@@ -82,16 +82,16 @@ class TestAddExamResult(unittest.TestCase):
         self.assertEqual(len(inst.exam_results), 0)
 
 
-# class TestGetExamResult(unittest.TestCase):
-#     def test_2(self):
-#         g_examres = getExamResult("")
-#         with self.assertRaises(Exception):
-#             getExamResult(g_examres)
-#
-#     def test_3(self):
-#         g_examres = getExamResult(None)
-#         with self.assertRaises(Exception):
-#             getExamResult(g_examres)
+class TestGetExamResult(unittest.TestCase):
+    def test_2(self):
+        g_examres = getExamResult("", "")
+        with self.assertRaises(Exception):
+            getExamResult(g_examres)
+
+    def test_3(self):
+        g_examres = getExamResult(None, None)
+        with self.assertRaises(Exception):
+            getExamResult(g_examres)
 
 if __name__ == "__main__":
     unittest.main()

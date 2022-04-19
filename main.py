@@ -47,6 +47,7 @@ class Group:
 class Exam:
     subject: Subject
     examDate: date
+    group: Group
     year: str
     lecturer_fio: str
 
@@ -55,6 +56,7 @@ class Exam:
         self.examDate = value_examDate
         self.year = value_year
         self.lecturer_fio = value_lectFio
+        self.group = None
 
 @dataclass
 class ExamPoints:
