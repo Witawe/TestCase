@@ -138,6 +138,12 @@ class Institute:
                 raise Exception('Студент не найден')
 
     def get_subject(self, sub_name: str):
+        if type(sub_name) != str:
+            raise Exception('Ошибка типа данных')
+        if str(sub_name) == "":
+            raise Exception('Заполните поле')
+        if str(sub_name) == None:
+            raise Exception('Заполните поле')
         for subject in self.subjects:
             if subject.name == sub_name:
                 return subject
@@ -145,6 +151,12 @@ class Institute:
                 raise Exception('Предмет не найден')
 
     def get_spec(self, name: str):
+        if type(name) != str:
+            raise Exception('Ошибка типа данных')
+        if str(name) == "":
+            raise Exception('Заполните поле')
+        if str(name) == None:
+            raise Exception('Заполните поле')
         for spec in self.specs:
             if spec.name == name:
                 return spec
@@ -159,7 +171,17 @@ class Institute:
                 raise Exception('Группа не найдена')
 
     def get_exam(self, gr_name, subj_name, exam_date):
-        pass
+        if type(gr_name) != str or type(subj_name) != str:
+            raise Exception("Ошибка типа данных")
+        if type(exam_date) != date:
+            raise Exception("Ошибка формата даты")
+        listExam = list()
+        for exam in self.exams:
+            if exam.group.name == gr_name and exam.subject.name == subj_name and exam.examDate == exam_date:
+                listExam.append(exam)
+        if len(listExam) == 0:
+            raise Exception("Экзамен не найден")
+        return listExam
 
     def get_exam_result(self, group_name, subject_name, date):
         return self.exam_points[(group_name, subject_name, date)]
