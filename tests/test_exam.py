@@ -1,6 +1,5 @@
 from main import Exam, Subject, Specialization
 from classes.institute import Institute
-from classes.getExam import getExam
 from datetime import date
 import unittest
 

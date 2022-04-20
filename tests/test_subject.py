@@ -1,6 +1,5 @@
 from main import Subject, Specialization
 from classes.institute import Institute
-from classes.getSubject import getSubject
 import unittest
 
 class TestAddSubject(unittest.TestCase):

@@ -1,6 +1,5 @@
 from main import Specialization
 from classes.institute import Institute
-from classes.getSpec import getSpecialization
 import unittest
 
 class TestAddSpec(unittest.TestCase):
