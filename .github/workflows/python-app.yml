@@ -33,3 +33,4 @@ jobs:
         python -m unittest test_spec.py
         python -m unittest test_student.py
         python -m unittest test_subject.py
+        python -m unittest testCase.py
