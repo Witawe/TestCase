@@ -172,18 +172,18 @@ class Institute:
             else:
                 raise Exception('Группа не найдена')
 
-    def get_exam(self, gr_name, subj_name, exam_date):
-        if type(gr_name) != str or type(subj_name) != str:
-            raise Exception("Ошибка типа данных")
-        if type(exam_date) != date:
-            raise Exception("Ошибка формата даты")
-        listExam = list()
-        for exam in self.exams:
-            if exam.group.name == gr_name and exam.subject.name == subj_name and exam.examDate == exam_date:
-                listExam.append(exam)
-        if len(listExam) == 0:
-            raise Exception("Экзамен не найден")
-        return listExam
+    # def get_exam(self, gr_name, subj_name, exam_date):
+    #     if type(gr_name) != str or type(subj_name) != str:
+    #         raise Exception("Ошибка типа данных")
+    #     if type(exam_date) != date:
+    #         raise Exception("Ошибка формата даты")
+    #     listExam = list()
+    #     for exam in self.exams:
+    #         if exam.group.name == gr_name and exam.subject.name == subj_name and exam.examDate == exam_date:
+    #             listExam.append(exam)
+    #     if len(listExam) == 0:
+    #         raise Exception("Экзамен не найден")
+    #     return listExam
 
     def get_exam_result(self, group_name, subject_name, data):
         if type(group_name) != str or type(subject_name) != str or type(data) != datetime:

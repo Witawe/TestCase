@@ -199,11 +199,11 @@ class TestGetExam(unittest.TestCase):
             Exam(sub1, data1, 2021,'Григорьев Александр Виссарионович')
         ]
         super(TestGetExam, self).__init__(*args, **kwargs)
-
+'''
     def test_1(self):
         g_exam = self.institute.get_exam("М-ФИИТ-21", "Методы тестирования и верификации программных продуктов", date(2021, 1, 1))
         #self.assertEqual()
-'''
+
     def test_2(self):
         with self.assertRaises(Exception):
             self.institute.get_exam("", "Методы тестирования и верификации программных продуктов", date(2021, 1, 1))
