@@ -69,7 +69,9 @@ class Institute:
                 type(subject.hours) != int or \
                 type(subject.semestr) != int:
             raise Exception('Ошибка типа данных')
-        if len(str(subject.specialization)) == 0:
+        # if subject.specialization.name == "":
+        #     raise Exception('Введите специлизацию')
+        if len(str(subject.specialization.name)) == 0:
             raise Exception('Введите специализацию')
         if subject.semestr == 0 or subject.hours == 0:
             raise Exception('Введите часы или семестр')
@@ -92,7 +94,7 @@ class Institute:
             raise Exception('Ошибка типа данных')
         if str(exam.subject.name) == "" or \
                 str(exam.subject.code) == "" or \
-                str(exam.subject.specialization) == "" or \
+                str(exam.subject.specialization.name) == "" or \
                 str(exam.subject.hours) == "" or \
                 str(exam.subject.semestr) == "":
             raise Exception('Ошибка типа данных')
@@ -113,14 +115,19 @@ class Institute:
                 raise Exception('Такой экзамен уже существует')
         self.exams.append(exam)
 
-    def add_exam_result(self, exam_results):
-        t = (exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)
-        if t in self.exam_results.keys():
-            self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)].append(
-                exam_results)
-        else:
-            self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)] = [
-                exam_results]
+    # def add_exam_result(self, exam_results):
+    #     t = (exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)
+    #     if t in self.exam_results.keys():
+    #         self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)].append(
+    #             exam_results)
+    #     else:
+    #         self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)] = [
+    #             exam_results]
+
+    def add_exam_points(self, exam_points: ExamPoints):
+        if type(exam_points) != ExamPoints:
+            raise Exception("Type peremennoi ne exampoints")
+        self.exam_points.append(exam_points)
 
     def get_student(self, studCode: int):
         if studCode < 0:

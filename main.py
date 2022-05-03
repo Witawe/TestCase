@@ -69,5 +69,5 @@ class ExamPoints:
         self.student = value_student
         self.inPoints = value_inPoints
         self.examPoints = value_examPoints
-        self.exam = None
+        self.exam = Exam
 
