@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: 'Witawe/TestForProjectTestCase'
-        path: 'tests'
+        path: ''
 
     - name: Test program
       run: |
