@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
+import re
 
 @dataclass
 class Student:
@@ -63,11 +64,75 @@ class ExamPoints:
     student: Student
     inPoints: float
     examPoints: float
-    exam: Exam
+    exDate: date
+    groupName: str
+    subject: Subject
 
-    def __init__(self, value_student: Student, value_inPoints: float, value_examPoints: float):
-        self.student = value_student
-        self.inPoints = value_inPoints
-        self.examPoints = value_examPoints
-        self.exam = Exam
+    def __init__(self, value_student: Student, value_inPoints: float,
+                 value_examPoints: float, value_date: date, value_groupName: str,
+                 value_subject: Subject):
+        self.setStudent(value_student)
+        self.setInPoints(value_inPoints)
+        self.setExamPoints(value_examPoints)
+        self.setExDate(value_date)
+        self.setGroupName(value_groupName)
+        self.setSubject(value_subject)
+
+    def setInPoints(self, new_inPoints):
+        if type(new_inPoints) != float:
+            raise Exception("Ошибка типа данных")
+        if 70.0 < new_inPoints:
+            raise Exception("Баллы за семестр больше 70")
+        if 0.0 > new_inPoints:
+            raise Exception("Баллы не могут быть отрицательными")
+        self.inPoints = new_inPoints
+
+    def getInPoints(self):
+        return self.inPoints
+
+    def setExamPoints(self, new_examPoints):
+        if type(new_examPoints) != float:
+            raise Exception("Ошибка типа данных")
+        if 30.0 < new_examPoints:
+            raise Exception("Баллы за экзамен не могут быть больше 30")
+        if 0.0 > new_examPoints:
+            raise Exception("Баллы за экзамен не могут быть отрицательными")
+        self.examPoints = new_examPoints
+
+    def getExamPoints(self):
+        return self.examPoints
+
+    def setStudent(self, new_student):
+        if type(new_student) != Student:
+            raise Exception("Ошибка типа данных")
+        self.student = new_student
+
+    def getStudent(self):
+        return self.student
+
+    def setExDate(self, exDate):
+        if type(exDate) != date:
+            raise Exception("Ошибка типа данных")
+        self.exDate = exDate
+
+    def getExDate(self):
+        return self.exDate
+
+    def setGroupName(self, groupName):
+        if type(groupName) != str:
+            raise Exception("Ошибка типа данных")
+        if not re.fullmatch(r'([МБ]-)?[А-Я]+-[1-9][0-9]', groupName):
+            raise Exception("Ошибка в названии группы")
+        self.groupName = groupName
+
+    def getGroupName(self):
+        return self.groupName
+
+    def setSubject(self, value_subject):
+        if type(value_subject) != Subject:
+            raise Exception("Ошибка типа данных")
+        self.subject = value_subject
+
+    def getSubject(self):
+        return self.subject
 

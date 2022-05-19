@@ -1,5 +1,6 @@
 from main import *
 import datetime
+import sys
 
 class Institute:
     def __init__(self):
@@ -8,7 +9,7 @@ class Institute:
         self.subjects = []
         self.specs = []
         self.exams = []
-        self.exam_results = []
+        self.exam_points = []
 
     def add_spec(self, spec: Specialization):
         if type(spec) != Specialization:
@@ -115,18 +116,9 @@ class Institute:
                 raise Exception('Такой экзамен уже существует')
         self.exams.append(exam)
 
-    # def add_exam_result(self, exam_results):
-    #     t = (exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)
-    #     if t in self.exam_results.keys():
-    #         self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)].append(
-    #             exam_results)
-    #     else:
-    #         self.exam_results[(exam_results.exam.group.name, exam_results.exam.subject.name, exam_results.examDate)] = [
-    #             exam_results]
-
     def add_exam_points(self, exam_points: ExamPoints):
         if type(exam_points) != ExamPoints:
-            raise Exception("Type peremennoi ne exampoints")
+            raise Exception("Ошибка типа данных")
         self.exam_points.append(exam_points)
 
     def get_student(self, studCode: int):
@@ -192,9 +184,69 @@ class Institute:
             raise Exception("Экзамен не найден")
         return listExam
 
-    def get_exam_result(self, group_name, subject_name, data):
-        if type(group_name) != str or type(subject_name) != str or type(data) != datetime:
+    def get_exam_points(self, gr_name, subj_name, ex_date):
+        if type(gr_name) != str or type(subj_name) != str:
             raise Exception("Ошибка типа данных")
-        if group_name == None or subject_name == None or data == None:
-            raise Exception("Заполните строки")
-        return self.exam_points[(group_name, subject_name, date)]
+        if type(ex_date) != date:
+            raise Exception("Ошибка типа данных")
+        listExamPoint = list()
+        for exampoint in self.exam_points:
+            if exampoint.groupName == gr_name and exampoint.subject.name == subj_name and exampoint.exDate == ex_date:
+                listExamPoint.append(exampoint)
+        if len(listExamPoint) == 0:
+            raise Exception("Группа не найдена")
+        return listExamPoint
+
+def addspec():
+    inst = Institute()
+    print("Введите название специализации")
+    print("Пример: Фундаментальная информатика и информационные технологии")
+    name = input()
+    inst.add_spec(Specialization(name))
+    if (len(inst.specs)) == 1:
+        print("Специализация успешно добавлена")
+        print(inst.specs)
+    else:
+        print("Ошибка добавления специализации")
+
+def addstud():
+    inst = Institute()
+    print("Введите имя")
+    print("Пример: Луковцев Алексей Владимирович")
+    name = input()
+    print("Введите номер зачетной книжки (10000 - 999999)")
+    print("Пример: 185775")
+    studcode = input()
+    inst.add_stud(Student(str(name), int(studcode)))
+    if (len(inst.students)) == 1:
+        print("Студент успешно добавлена")
+        print(inst.students)
+    else:
+        print("Ошибка добавления студента")
+
+# def addgroup():
+#
+
+# class main():
+#     print("Выберите один из этих функций(введите цифру): ")
+#     print("1 - Добавить специализацию\n"
+#           "2 - Добавить студента\n"
+#           "3 - Добавить группу\n"
+#           "4 - Добавить предмет\n"
+#           "5 - Добавить экзамен\n")
+#     print()
+#     func = input()
+#
+#     if func == str(1):
+#         addspec()
+#     if func == str(2):
+#         addstud()
+#     # if func == str(3):
+#     #     addspec()
+#     # if func == str(4):
+#     #     addspec()
+#     # if func == str(5):
+#     #     addspec()
+#
+# if __name__ == "__main__":
+#     main()
