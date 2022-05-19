@@ -1,6 +1,5 @@
 from main import *
 import datetime
-import sys
 
 class Institute:
     def __init__(self):
@@ -197,56 +196,3 @@ class Institute:
             raise Exception("Группа не найдена")
         return listExamPoint
 
-def addspec():
-    inst = Institute()
-    print("Введите название специализации")
-    print("Пример: Фундаментальная информатика и информационные технологии")
-    name = input()
-    inst.add_spec(Specialization(name))
-    if (len(inst.specs)) == 1:
-        print("Специализация успешно добавлена")
-        print(inst.specs)
-    else:
-        print("Ошибка добавления специализации")
-
-def addstud():
-    inst = Institute()
-    print("Введите имя")
-    print("Пример: Луковцев Алексей Владимирович")
-    name = input()
-    print("Введите номер зачетной книжки (10000 - 999999)")
-    print("Пример: 185775")
-    studcode = input()
-    inst.add_stud(Student(str(name), int(studcode)))
-    if (len(inst.students)) == 1:
-        print("Студент успешно добавлена")
-        print(inst.students)
-    else:
-        print("Ошибка добавления студента")
-
-# def addgroup():
-#
-
-# class main():
-#     print("Выберите один из этих функций(введите цифру): ")
-#     print("1 - Добавить специализацию\n"
-#           "2 - Добавить студента\n"
-#           "3 - Добавить группу\n"
-#           "4 - Добавить предмет\n"
-#           "5 - Добавить экзамен\n")
-#     print()
-#     func = input()
-#
-#     if func == str(1):
-#         addspec()
-#     if func == str(2):
-#         addstud()
-#     # if func == str(3):
-#     #     addspec()
-#     # if func == str(4):
-#     #     addspec()
-#     # if func == str(5):
-#     #     addspec()
-#
-# if __name__ == "__main__":
-#     main()
