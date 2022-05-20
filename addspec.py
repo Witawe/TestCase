@@ -1,19 +1,12 @@
-from classes.institute import Specialization, Institute
+from classes.institute import *
 import sys
 
-class main():
+def addspec(institute):
     inst = Institute()
-    #print("Введите название специализации")
-    #print("Пример: Фундаментальная информатика и информационные технологии")
-    if len(sys.argv) < 2:
-        print('Ошибка: example - addspec.py ФИИТ')
-        quit()
-    name = sys.argv[1]
+    name = input("Введите название специализации: ")
     inst.add_spec(Specialization(name))
     if (len(inst.specs)) == 1:
-        if name != '':
-            print(inst.specs[-1].name)
-            print("Специализация успешно добавлена")
-        else:
-            raise Exception("Ошибка добавления специализации")
-            print("Ошибка добавления специализации")
+        print(inst.get_spec(name))
+        print("Специализация успешно добавлена")
+    else:
+        raise Exception("Ошибка добавления специализации")
